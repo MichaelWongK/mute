@@ -1,0 +1,53 @@
+base:
+  config:
+#    sentile:
+#      hostname: micheal.wang
+#      port: 8858
+    nacos:
+      hostname: micheal.wang
+#      hostname: 172.16.227.110
+      port: 8848
+
+spring:
+  application:
+    name: ums-admin-provider
+#  cloud:
+##    nacos:
+##      discovery:
+##        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+#    sentinel:
+#      transport:
+#        dashboard: ${base.config.sentile.hostname}:${base.config.sentile.port}
+#        client-ip:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://micheal.wang:3306/mplus_ums_admin?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+    username: root
+    password: mingkai13
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+dubbo:
+  scan:
+    base-packages: com.micheal.mute.provider.service
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    address: nacos://${base.config.nacos.hostname}
+    port: ${base.config.nacos.port}
+
+mybatis:
+  type-aliases-package: com.micheal.mute.provider.domain
+  mapper-locations: classpath:mapper/*.xml
