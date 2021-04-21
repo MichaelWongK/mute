@@ -51,6 +51,12 @@ public class UmsAdmin implements Serializable {
     private String nickName;
 
     /**
+     * 部门ID
+     */
+    @Column(name = "用户所属部门id")
+    private Integer deptId;
+
+    /**
      * 备注信息
      */
     @Column(name = "note")

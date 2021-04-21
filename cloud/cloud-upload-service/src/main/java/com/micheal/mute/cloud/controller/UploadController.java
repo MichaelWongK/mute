@@ -21,7 +21,6 @@ import java.io.IOException;
 public class UploadController {
 
     public static final String ENDPOINT = "http://www.micheal.wang:10020/mongo";
-//    public static final String ENDPOINT = "http://localhost:8088/mongo";
 
     /**
      * 文件上传

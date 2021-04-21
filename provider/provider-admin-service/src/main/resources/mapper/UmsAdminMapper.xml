@@ -8,13 +8,14 @@
     <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="note" jdbcType="VARCHAR" property="note" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, username, `password`, icon, email, nick_name, note, create_time, login_time, 
+    id, username, `password`, icon, email, nick_name, dept_id, note, create_time, login_time,
     `status`
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -29,11 +30,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.micheal.mute.provider.domain.UmsAdmin" useGeneratedKeys="true">
     insert into ums_admin (username, `password`, icon, 
-      email, nick_name, note, 
+      email, nick_name, dept_id, note,
       create_time, login_time, `status`
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR},
       #{createTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
       )
   </insert>
@@ -54,6 +55,9 @@
       </if>
       <if test="nickName != null">
         nick_name,
+      </if>
+      <if test="deptId != null">
+        dept_id,
       </if>
       <if test="note != null">
         note,
@@ -83,6 +87,9 @@
       </if>
       <if test="nickName != null">
         #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
       </if>
       <if test="note != null">
         #{note,jdbcType=VARCHAR},
@@ -116,6 +123,9 @@
       <if test="nickName != null">
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
       <if test="note != null">
         note = #{note,jdbcType=VARCHAR},
       </if>
@@ -138,6 +148,7 @@
       icon = #{icon,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
       note = #{note,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       login_time = #{loginTime,jdbcType=TIMESTAMP},
