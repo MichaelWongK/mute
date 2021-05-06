@@ -4,8 +4,8 @@ base:
 #      hostname: micheal.wang
 #      port: 8858
     nacos:
-      hostname: micheal.wang
-#      hostname: 172.16.227.110
+#      hostname: micheal.wang
+      hostname: localhost
       port: 8848
 
 spring:

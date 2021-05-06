@@ -1,0 +1,89 @@
+base:
+  config:
+    oauth:
+      hostname: localhost
+      port: 9001
+#    sentile:
+#      hostname: micheal.wang
+#      port: 8858
+    nacos:
+#      hostname: micheal.wang
+      hostname: localhost
+      port: 8848
+
+spring:
+  application:
+    name: cloud-activiti
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${base.config.nacos.hostname}:${base.config.nacos.port}
+#    sentinel:
+#      transport:
+#        dashboard: ${base.config.sentile.hostname}:${base.config.sentile.port}
+#        client-ip:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://micheal.wang:3306/ry?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+    username: root
+    password: mingkai13
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  #freemarker模板配置
+  freemarker:
+    suffix: .ftl
+    cache: false
+    charset: UTF-8
+    contentType: text/html
+    requestContextAttribute: ctx
+    templateEncoding: UTF-8
+    templateLoaderPath: classpath:/templates/
+    settings:
+      defaultEncoding: UTF-8
+      url_escaping_charset: UTF-8
+      locale: zh_CN
+  # activiti 模块
+  # 解决启动报错：class path resource [processes/] cannot be resolved to URL because it does not exist
+  activiti:
+    check-process-definitions: false
+    # 检测身份信息表是否存在
+    db-identity-used: false
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/token
+      user-authorization-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/authorize
+    resource:
+      token-info-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/check_token
+
+logging:
+  file:
+    path: ./logs
+    name: bpm-service
+
+server:
+  port: 10003
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+mybatis:
+  type-aliases-package: com.micheal.mute.cloud.activiti.domain
+  mapper-locations: classpath:mapper/*.xml

@@ -79,5 +79,6 @@
 <!--        <module>cloud-message-api</module>-->
         <module>cloud-message-feign</module>
         <module>cloud-message-service</module>
+        <module>cloud-activity-service</module>
     </modules>
 </project>

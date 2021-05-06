@@ -26,4 +26,12 @@
             <email>wangmk13@163.com</email>
         </developer>
     </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.micheal.mute</groupId>
+            <artifactId>commons-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
