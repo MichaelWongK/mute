@@ -1,9 +1,9 @@
 package com.micheal.mute.cloud.activity.modeler;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.github.pagehelper.Page;
 import com.micheal.mute.cloud.activity.domain.AjaxResult;
 import com.micheal.mute.commons.dto.ResponseResult;
 import com.micheal.mute.commons.page.PageDomain;
@@ -44,7 +44,7 @@ public class ModelerController {
      * @return
      */
     @RequestMapping("/list")
-    public ResponseResult list(ModelEntityImpl modelEntity, Integer isDeployed, PageDomain page) {
+    public ResponseResult list(ModelEntityImpl modelEntity, Integer isDeployed, PageDomain pageDomain) {
         ModelQuery modelQuery = repositoryService.createModelQuery();
         modelQuery.orderByLastUpdateTime().desc();
 
@@ -62,15 +62,15 @@ public class ModelerController {
                 modelQuery.notDeployed();
             }
         }
-        List<Model> resultList = modelQuery.listPage(page.getPageNum() - 1, page.getPageSize());
+        List<Model> resultList = modelQuery.listPage((pageDomain.getPageNum() - 1) * pageDomain.getPageSize(), pageDomain.getPageSize());
 
-        Page<Model> list = new Page<>();
-        list.addAll(resultList);
-        list.setTotal(modelQuery.count());
-        list.setPageNum(page.getPageNum());
-        list.setPageSize(page.getPageSize());
+        Page<Model> page = new Page<>();
+        page.setRecords(resultList);
+        page.setTotal(modelQuery.count());
+        page.setCurrent(pageDomain.getPageNum());
+        page.setSize(pageDomain.getPageSize());
 
-        return new ResponseResult(ResponseResult.CodeStatus.OK, list);
+        return new ResponseResult(ResponseResult.CodeStatus.OK, page);
 
     }
 

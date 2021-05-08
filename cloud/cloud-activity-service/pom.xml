@@ -44,7 +44,18 @@
 
         <dependency>
             <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
+            <artifactId>activiti-spring-boot-starter-basic</artifactId>
+            <version>${activiti.version}</version>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.mybatis</groupId>-->
+<!--                    <artifactId>mybatis</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-jpa</artifactId>
             <version>${activiti.version}</version>
         </dependency>
         <!--activiti modeler 5.22 start-->
