@@ -1,4 +1,4 @@
-package com.micheal.mute.cloud.activity.domain;
+package com.micheal.mute.commons.provider.domain;
 
 
 import com.micheal.mute.commons.utils.StringUtils;

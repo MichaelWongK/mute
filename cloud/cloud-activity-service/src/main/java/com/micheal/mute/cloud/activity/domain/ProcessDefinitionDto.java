@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2021/5/6 18:22
  * @Description
  */
-public class ProcessDefinition extends BaseEntity {
+public class ProcessDefinitionDto extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 

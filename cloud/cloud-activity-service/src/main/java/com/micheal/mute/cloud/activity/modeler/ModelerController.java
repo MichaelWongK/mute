@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.micheal.mute.cloud.activity.domain.AjaxResult;
+import com.micheal.mute.commons.provider.domain.AjaxResult;
 import com.micheal.mute.commons.dto.ResponseResult;
 import com.micheal.mute.commons.page.PageDomain;
 import com.micheal.mute.commons.utils.StringUtils;

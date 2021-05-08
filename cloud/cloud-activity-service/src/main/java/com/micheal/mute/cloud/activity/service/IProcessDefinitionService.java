@@ -1,7 +1,7 @@
 package com.micheal.mute.cloud.activity.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.micheal.mute.cloud.activity.domain.ProcessDefinition;
+import com.micheal.mute.cloud.activity.domain.ProcessDefinitionDto;
 import com.micheal.mute.commons.page.PageDomain;
 
 /**
@@ -13,10 +13,10 @@ public interface IProcessDefinitionService {
 
     /**
      * 分页查询流程定义文件
-     * @param processDefinition
+     * @param processDefinitionDto
      * @return
      */
-    Page<ProcessDefinition> listProcessDefinition(com.micheal.mute.cloud.activity.domain.ProcessDefinition processDefinition, PageDomain pageDomain);
+    Page<ProcessDefinitionDto> listProcessDefinition(ProcessDefinitionDto processDefinitionDto, PageDomain pageDomain);
 
     void deployProcessDefinition(String arg);
 
@@ -25,7 +25,7 @@ public interface IProcessDefinitionService {
      * @param deploymentIds
      * @return
      */
-    int deleteProcessDeploymentByIds(String deploymentIds);
+    int deleteProcessDeploymentByIds(String deploymentIds) throws Exception;
 
     /**
      * 挂起/激活流程定义
