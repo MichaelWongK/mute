@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author <a href="mailto:wangmk13@163.com">micheal.wang</a>
@@ -35,7 +36,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
 
     @Override
-    @SentinelResource(value = "getByUsername", fallback = "getByUsernameFallback", fallbackClass = UmsAdminServiceFallback.class)
+//    @SentinelResource(value = "getByUsername", fallback = "getByUsernameFallback", fallbackClass = UmsAdminServiceFallback.class)
     public UmsAdmin get(String username) {
         QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper();
         queryWrapper.eq("username", username);
@@ -71,6 +72,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         UmsAdmin umsAdmin = get(username);
         umsAdmin.setIcon(path);
         return umsAdminMapper.updateByPrimaryKeySelective(umsAdmin);
+    }
+
+    @Override
+    public List<UmsAdmin> getListByGroupId(String groupId) {
+        return umsAdminMapper.selectUsersByGroupId(groupId);
+    }
+
+    @Override
+    public List<String> getGroupsByUsername(String username) {
+        return umsAdminMapper.selectGroupsByUsername(username);
     }
 
     /**

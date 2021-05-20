@@ -2,6 +2,8 @@ package com.micheal.mute.provider.api;
 
 import com.micheal.mute.provider.domain.UmsAdmin;
 
+import java.util.List;
+
 /**
  * @author <a href="mailto:wangmk13@163.com">micheal.wang</a>
  * @date 2020/11/19 16:51
@@ -61,4 +63,14 @@ public interface UmsAdminService {
      * @return {@code int} 大于 0 则表示更新成功
      */
     int modifyIcon(String username, String path);
+
+    /**
+     * 查询群组下所有用户
+     *
+     * @param groupId {@code String} 群组id
+     * @return
+     */
+    List<UmsAdmin> getListByGroupId(String groupId);
+
+    List<String> getGroupsByUsername(String username);
 }

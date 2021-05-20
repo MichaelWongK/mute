@@ -18,7 +18,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
         })
 @EnableDiscoveryClient
 @EnableResourceServer
-//@MapperScan(basePackages = "com.micheal.mute.cloud.activity.mapper")
 public class CloudActivityApplication {
 
     public static void main(String[] args) {

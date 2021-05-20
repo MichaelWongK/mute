@@ -45,3 +45,27 @@ CREATE TABLE `ums_user_role` (
   `role_id` bigint(20) NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户和角色关联表';
+
+ ----------------------------
+-- Table structure for biz_todo_item
+-- ----------------------------
+DROP TABLE IF EXISTS `biz_todo_item`;
+CREATE TABLE `biz_todo_item` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键 ID',
+  `item_name` varchar(100) DEFAULT NULL COMMENT '事项标题',
+  `item_content` varchar(500) DEFAULT NULL COMMENT '事项内容',
+  `module` varchar(50) DEFAULT NULL COMMENT '模块名称 (必须以 uri 一致)',
+  `task_id` varchar(64) DEFAULT NULL COMMENT '任务 ID',
+  `instance_id` varchar(32) DEFAULT NULL COMMENT '流程实例 ID',
+  `task_name` varchar(50) DEFAULT NULL COMMENT '任务名称 (必须以表单页面名称一致)',
+  `node_name` varchar(50) DEFAULT NULL COMMENT '节点名称',
+  `is_view` char(1) DEFAULT '0' COMMENT '是否查看 default 0 (0 否 1 是)',
+  `is_handle` char(1) DEFAULT '0' COMMENT '是否处理 default 0 (0 否 1 是)',
+  `todo_user_id` varchar(20) DEFAULT NULL COMMENT '待办人 ID',
+  `todo_user_name` varchar(30) DEFAULT NULL COMMENT '待办人名称',
+  `handle_user_id` varchar(20) DEFAULT NULL COMMENT '处理人 ID',
+  `handle_user_name` varchar(30) DEFAULT NULL COMMENT '处理人名称',
+  `todo_time` datetime DEFAULT NULL COMMENT '通知时间',
+  `handle_time` datetime DEFAULT NULL COMMENT '处理时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='待办事项表';

@@ -397,6 +397,18 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
         return sb.toString();
     }
 
+    /**
+     * 字符串首字母大写
+     * @param s
+     * @return
+     */
+    public static String  firstLetterToUppercase(String s) {
+        if (s == null) {
+            return null;
+        }
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
     @SuppressWarnings("unchecked")
     public static <T> T cast(Object obj)
     {

@@ -1,4 +1,4 @@
-package com.micheal.mute.cloud.activity.domain;
+package com.micheal.mute.cloud.activity.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.micheal.mute.commons.provider.domain.BaseEntity;

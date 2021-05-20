@@ -1,7 +1,7 @@
 package com.micheal.mute.cloud.activity.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.micheal.mute.cloud.activity.domain.ProcessDefinitionDto;
+import com.micheal.mute.cloud.activity.dto.ProcessDefinitionDto;
 import com.micheal.mute.commons.page.PageDomain;
 
 /**

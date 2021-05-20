@@ -70,6 +70,19 @@ security:
     resource:
       token-info-uri: http://${base.config.oauth.hostname}:${base.config.oauth.port}/oauth/check_token
 
+dubbo:
+  scan:
+    base-packages: com.micheal.mute.business.controller
+  protocol:
+    name: dubbo
+    port: -1
+    serialization: kryo
+  registry:
+    #    address: nacos://172.16.227.110
+#    address: nacos://micheal.wang
+    address: nacos://localhost
+    port: 8848
+
 logging:
   file:
     path: ./logs
@@ -83,7 +96,6 @@ management:
     web:
       exposure:
         include: "*"
-
-mybatis:
-  type-aliases-package: com.micheal.mute.cloud.activiti.domain
+mybatis-plus:
+  type-aliases-package: com.micheal.mute.cloud.activity.domain
   mapper-locations: classpath:mapper/*.xml

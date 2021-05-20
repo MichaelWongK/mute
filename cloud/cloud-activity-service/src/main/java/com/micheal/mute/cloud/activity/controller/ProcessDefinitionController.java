@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.micheal.mute.commons.provider.controller.BaseController;
 import com.micheal.mute.commons.provider.domain.AjaxResult;
-import com.micheal.mute.cloud.activity.domain.ProcessDefinitionDto;
+import com.micheal.mute.cloud.activity.dto.ProcessDefinitionDto;
 import com.micheal.mute.cloud.activity.service.IProcessDefinitionService;
 import com.micheal.mute.commons.page.PageDomain;
 import com.micheal.mute.commons.utils.IOUtils;
@@ -84,6 +84,17 @@ public class ProcessDefinitionController extends BaseController {
     }
 
     /**
+     * 导出流程定义
+     * @return
+     */
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export() {
+        // TODO 导出流程定义待补冲
+        return null;
+    }
+
+    /**
      * 挂起或激活流程定义
      * @param id
      * @param suspendState
@@ -108,6 +119,7 @@ public class ProcessDefinitionController extends BaseController {
 
         // 读取资源
         InputStream resourceAsStream = repositoryService.getResourceAsStream(processDefinition.getDeploymentId(), resourceName);
+        response.setContentType("image/png");
         IOUtils.OutputResponse(response, resourceAsStream);
     }
 

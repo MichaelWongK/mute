@@ -50,4 +50,9 @@ public class UmsAdminTest {
         int result = umsAdminService.insert(umsAdmin);
         Assert.assertEquals(result, 1);
     }
+
+    @Test
+    public void testSelect() {
+        System.out.println(umsAdminMapper.selectUsersByGroupId("hr"));;
+    }
 }
